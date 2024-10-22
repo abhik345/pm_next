@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import { useState, useEffect } from 'react';
-
-const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { fetchData } from '@/lib/api';
 
 const Banner = () => {
   const [bannerData, setBannerData] = useState(null);
@@ -22,18 +21,11 @@ const Banner = () => {
 
   useEffect(() => {
     const fetchBannerData = async () => {
-      try {
-        const response = await fetch(
-          `${NEXT_PUBLIC_API_BASE_URL}/pages/10?_fields=acf.banner_section_options&acf_format=standard`,
-          { method: 'GET' }
-        );
-        if (!response.ok) {
-          console.log('Failed to fetch data');
-        }
-        const data = await response.json();
+      const data = await fetchData('/pages/10?_fields=acf.banner_section_options&acf_format=standard');
+      if (data) {
         setBannerData(data.acf.banner_section_options);
-      } catch (error) {
-        console.log(error.message);
+      } else {
+        console.log('Failed to fetch banner data');
       }
     };
 
