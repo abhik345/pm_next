@@ -1,4 +1,5 @@
 "use client"
+import { fetchData } from '@/lib/api';
 import { useState, useEffect } from 'react';
 
 
@@ -22,28 +23,18 @@ const About = () => {
           window.removeEventListener('resize', handleResize);
         };
       }, []);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/pages/10?_fields=acf.about_section_options&acf_format=standard`, {
-          method: 'GET',
-        });
-
-        if (!response.ok) {
-          console.log('Failed to fetch data');
-        }
-
-        const data = await response.json();
-        const result = data.acf?.about_section_options;
-        setAboutData(result);
-      } catch (err) {
-        setError(err.message);
-      } 
+      
+  useEffect(()=>{
+    const fetchAboutData = async ()=>{
+      const data = await fetchData('/pages/10?_fields=acf.about_section_options&acf_format=standard')
+      if (data) {
+        setAboutData(data.acf?.about_section_options)
+      }else{
+        console.log("failed to fetch data form api")
+      }
     };
-
-    fetchData();
-  }, []);
+    fetchAboutData()
+  },[])
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
