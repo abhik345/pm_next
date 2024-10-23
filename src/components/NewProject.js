@@ -7,32 +7,22 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { fetchData } from "@/lib/api";
 
 const NewProject = () => {
     const [projects,setNewProject] = useState([])
     const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
-
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/book`, {
-              method: 'GET',
-            });
-    
-            if (!response.ok) {
-              console.log('Failed to fetch data');
-            }
-    
-            const data = await response.json();
-            const result = data;
-            setNewProject(result);
-          } catch (err) {
-            console.log(err)
-          } 
-        };
-    
-        fetchData();
-      }, []);
+    useEffect(()=>{
+      const fetchNewProject = async () => {
+        const data = await fetchData('/book')
+        if (data) {
+          setNewProject(data)
+        } else {
+          console.log("failed to fetch api data")
+        }
+      };
+      fetchNewProject()
+    },[])
 
       useEffect(() => {
         const handleResize = () => {
