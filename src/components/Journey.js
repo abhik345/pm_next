@@ -1,17 +1,27 @@
+"use client";
+
+import { fetchData } from "@/lib/api";
 import Image from "next/image";
-const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+import { useEffect, useState } from "react";
 
-const Journey = async () => {
+const Journey =  () => {
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/pages/10?_fields=acf.about_section_options&acf_format=standard`,{
-        method:"GET"
-    });
-    if(!response.ok){
-        console.log("failed to fetch data")
-    }
-    const data = await response.json()
-    const result = data.acf?.about_section_options;
-    console.log(result)
+  const [journeyData, setJourneyData] = useState(null);
+
+    const fetchJourneyData = async () => {
+      const data = await fetchData('/pages/10?_fields=acf.journey_section_options&acf_format=standard');
+      if (data) {
+        setJourneyData(data?.acf?.journey_section_options);
+      } else {
+        console.log('Failed to fetch journey data');
+      }
+    };
+  
+    useEffect(() => {
+      fetchJourneyData();
+    }, []);
+  
+
   return (
     <>
       <section className="about_journey pt-5 pb-20 mb-0" style={{
@@ -20,10 +30,10 @@ const Journey = async () => {
         <div className="container mx-auto px-10">
           <h2 className="main-heading text-[36px] font-bold mb-4 md:text-[48px] lg:text-[50px]">
             <span className="text-[#959595]">
-              {result?.title_section?.title}
+              {journeyData?.title_section?.title}
             </span>
             <span className="text-[#959595]">
-              {result?.title_section?.sub_title}
+              {journeyData?.title_section?.sub_title}
             </span>
           </h2>
           <div className="about_new_section col-span-4 flex flex-wrap gap-5 justify-center w-[100%] relative ">

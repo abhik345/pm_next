@@ -9,7 +9,6 @@ const Brands = async () => {
     const data = await response.json()
     const result = data?.acf?.our_brand_options
 
-    console.log(result)
   return (
     <>
       <div className="bg-black text-white py-8 md:py-16 lg:py-24">

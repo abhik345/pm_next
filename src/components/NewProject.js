@@ -77,8 +77,8 @@ const NewProject = () => {
                         disableOnInteraction: false,
                         pauseOnMouseEnter: true,
                       }}
-                       onSwiper={(swiper) => console.log(swiper)}
-                       onSlideChange={() => console.log('slide change')}
+                      //  onSwiper={(swiper) => console.log(swiper)}
+                      //  onSlideChange={() => console.log('slide change')}
                        className="mySwiper"
                 >
                   <SwiperSlide>
