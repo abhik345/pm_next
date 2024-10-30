@@ -25,18 +25,18 @@ const Blog = () => {
         fetchallBlog()
     },[])
 
-    const createSlug = (text) => {
-      return text?.toLowerCase()?.replace(/[^a-z0-9]+/g, "_")?.replace(/(^-|-$)/g, "");
-    };
+    // const createSlug = (text) => {
+    //   return text?.toLowerCase()?.replace(/[^a-z0-9]+/g, "_")?.replace(/(^-|-$)/g, "");
+    // };
 
     const handleClick =()=>{
         router.push("/all-blogs")
     }
 
-    const handleDetailsClick =(card)=>{
-      const slug = createSlug(card?.title);
-      router.push(`/blog-details/${slug}`)
-    }
+    // const handleDetailsClick =(card)=>{
+    //   const slug = createSlug(card?.title);
+    //   router.push(`/blogs/${slug}`)
+    // }
     
   return (
     <>
@@ -102,7 +102,7 @@ const Blog = () => {
             {allBlog &&
               allBlog?.map((card) => {
                 return (
-                  <SwiperSlide key={card?.id} className="px-2 py-0"  onClick={handleDetailsClick}>
+                  <SwiperSlide key={card?.id} className="px-2 py-0">
                     
                       <div className="post_box" key={card}>
                         <div className="post_card relative bg-white overflow-hidden">
@@ -119,7 +119,7 @@ const Blog = () => {
                                 {card?.author}
                               </p>
                               <p className="flex items-center gap-2 text-sm text-slate-700">
-                                {/* <CalendarDays className="w-5 h-5" /> */}
+                               
                                 {card?.date}
                               </p>
                             </div>

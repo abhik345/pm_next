@@ -1,5 +1,6 @@
 import { fetchData } from "@/lib/api";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = async () => {
   const data = await fetchData("/acf-options/header");
@@ -13,7 +14,7 @@ const Navbar = async () => {
   return (
     <>
       <header className="flex items-center justify-between absolute px-4 sm:px-6 lg:px-8 bg-transparent w-[100%] z-10">
-        <a href="/">
+        <Link href="/">
         <div className="mt-6 flex items-center cursor-pointer">
           <Image
             src={result?.header_logo?.logo_image?.image}
@@ -29,7 +30,7 @@ const Navbar = async () => {
             loading="lazy"
           />
         </div>
-        </a>
+        </Link>
         <nav className="flex items-center space-x-4 md:space-x-6 lg:space-x-10">
           <div className="flex flex-row items-center gap-1 md:gap-3 lg:gap-4">
             {result?.social_media_sections &&
