@@ -33,13 +33,12 @@ const Navbar = async () => {
         <nav className="flex items-center space-x-4 md:space-x-6 lg:space-x-10">
           <div className="flex flex-row items-center gap-1 md:gap-3 lg:gap-4">
             {result?.social_media_sections &&
-              result?.social_media_sections.map((icon, index) => (
+              result?.social_media_sections?.map((icon, index) => (
                 <div key={index} className="p-2 rounded-full">
                   <a href={icon.link} target="_blank">
-                    <Image
+                    <img
+                      className="inline-block !h-5 !w-5"
                       src={icon.social_media_icon}
-                      width={20}
-                      height={20}
                       alt={icon.social_media_name}
                     />
                   </a>
