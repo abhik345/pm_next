@@ -13,3 +13,4 @@ export const fetchData = async (endpoint, options = {}) => {
     return null;
   }
 };
+

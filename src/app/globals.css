@@ -197,7 +197,7 @@
   .inner_text_hover::before {
     position: absolute;
     content: '';
-    /* background-image: url(/plus.png); */
+    background-image: url(/plus.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -560,7 +560,7 @@
   .main_project .swiper-button-next::after {
     position: absolute;
     content: "";
-    background-image: url(/assets/arrow.png);
+    background-image: url(/arrow.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -578,7 +578,7 @@
   .main_project .swiper-button-prev::after {
     position: absolute;
     content: "";
-    background-image: url(/assets/arrow.png);
+    background-image: url(/arrow.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -1267,7 +1267,7 @@
   
     .banner_video {
       height: 654px !important;
-      position: fixed;
+      /* position: fixed; */
     }
   
     section {
@@ -1681,3 +1681,67 @@
   }
     
   
+  @media screen and (max-width: 639px) {
+
+    .newsletter .newletter_div .title_main{
+        margin: 0;
+        padding: 0;
+        height: 90px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .full_contain{
+        position: relative;
+        top: -28px;
+        padding-top: 55px;
+        margin-top: 20px;
+        margin-bottom: 200px;
+    }
+    .from_contain {
+        position: absolute;
+        left: 0px;
+        margin: 50px;
+    }
+  
+    .img_conteint {
+      flex-direction: column;
+      height: auto;
+      padding: 1rem;
+      margin-top: 10rem;
+  
+    }
+  
+    .banner_img {
+     position: relative;
+     top: 450px;
+     width: 200px;
+     padding: 40px;
+    }
+  
+    input[type="email"] {
+      padding: 1rem;
+      font-size: 0.875rem;
+    }
+  
+    button {
+      padding: 1rem;
+      font-size: 0.875rem;
+    }
+  
+    .text_respon {
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+  
+    .newsletter .newletter_div .title_main .date_element{
+        position: absolute;
+        top: 72px;
+        right: 2px;
+        font-size: small;
+        width: 144px;
+        height: 35px;
+  
+    }
+  }
