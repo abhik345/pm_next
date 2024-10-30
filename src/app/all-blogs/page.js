@@ -49,7 +49,7 @@ const page = () => {
             <div className="images_line relative flex justify-center">
               <img
                 className="w-6 h-6"
-                src="/assets/Yellow_Circle.png"
+                src="/Yellow_Circle.png"
                 alt="Design"
               />
             </div>

@@ -1,13 +1,24 @@
-const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+"use client"
+import { fetchData } from '@/lib/api';
+import { useState, useEffect } from 'react';
+
 import { ChevronRight } from "lucide-react";
 
-const Brands = async () => {
-    const response = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/pages/10?_fields=acf.our_brand_options&acf_format=standard`)
-    if (!response.ok) {
-        console.log("failed to fetch data")
-    }
-    const data = await response.json()
-    const result = data?.acf?.our_brand_options
+const Brands = () => {
+  const [brandData, setBrandData] = useState(null);
+
+  useEffect(() => {
+    const fetchBrandData = async () => {
+      const data = await fetchData('/pages/10?_fields=acf.our_brand_options&acf_format=standard')
+      if (data) {
+        setBrandData(data.acf?.our_brand_options)
+      } else {
+        console.log("failed to fetch data form api")
+      }
+    };
+    fetchBrandData()
+  }, [])
 
   return (
     <>
@@ -17,21 +28,21 @@ const Brands = async () => {
             <div className="col-span-1 md:col-span-2 lg:col-span-2 text-white">
               <div className="text-left">
                 <h3 className="cite-with-line text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] font-medium">
-                  {result?.heading}
+                  {brandData?.heading}
                 </h3>
                 <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
                   <span className="text-[#959595]">
-                    {result?.title_section?.title}{" "}
+                    {brandData?.title_section?.title}{" "}
                   </span>
-                  <span>{result?.title_section?.sub_title}</span>
+                  <span>{brandData?.title_section?.sub_title}</span>
                 </h2>
                 <p className="mt-4 text-sm sm:text-base md:text-sm lg:text-xl xl:text-[1.15rem] md:max-w-2xl">
-                  {result?.text}
+                  {brandData?.text}
                 </p>
               </div>
             </div>
-            {result?.brand_options &&
-              result?.brand_options?.map((item, index) => (
+            {brandData?.brand_options &&
+              brandData?.brand_options.map((item, index) => (
                 <a
                   href={item?.brand_url}
                   target="_blank"
@@ -69,6 +80,6 @@ const Brands = async () => {
       </div>
     </>
   );
-}
+};
 
-export default Brands
+export default Brands;

@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import Link from "next/link";
 
 const Blog = () => {
     const [allBlog,setAllblog] = useState(null)
@@ -26,9 +25,19 @@ const Blog = () => {
         fetchallBlog()
     },[])
 
+    const createSlug = (text) => {
+      return text?.toLowerCase()?.replace(/[^a-z0-9]+/g, "_")?.replace(/(^-|-$)/g, "");
+    };
+
     const handleClick =()=>{
         router.push("/all-blogs")
     }
+
+    const handleDetailsClick =(card)=>{
+      const slug = createSlug(card?.title);
+      router.push(`/blog-details/${slug}`)
+    }
+    
   return (
     <>
       <section className="post_swiper_main cursor-pointer">
@@ -92,11 +101,9 @@ const Blog = () => {
           >
             {allBlog &&
               allBlog?.map((card) => {
-                // const slug = createSlug(card?.title);
                 return (
-                  <SwiperSlide key={card?.id} className="px-2 py-0">
-                    <Link href="/"
-                    >
+                  <SwiperSlide key={card?.id} className="px-2 py-0"  onClick={handleDetailsClick}>
+                    
                       <div className="post_box" key={card}>
                         <div className="post_card relative bg-white overflow-hidden">
                           <div className="img_part rounded-2xl overflow-auto">
@@ -128,7 +135,7 @@ const Blog = () => {
                           </div>
                         </div>
                       </div>
-                    </Link>
+                    
                   </SwiperSlide>
                 );
               })}

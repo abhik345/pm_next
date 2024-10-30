@@ -196,12 +196,6 @@ const About = () => {
               <p className="text-red-500 mt-2 text-sm">{emailError}</p>
             )}
           </div>
-
-
-
-
-
-
         </div>
       </div>
     </div>
