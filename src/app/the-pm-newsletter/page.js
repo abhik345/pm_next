@@ -1,6 +1,7 @@
 "use client"
 
 import { fetchData } from "@/lib/api"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const page = () => {
@@ -48,9 +49,9 @@ const page = () => {
           <div className="top_news_div flex items-center">
             <div className="title_main relative left-0 right-0  w-full h-44 lg:w-[600px] xl:w-[700px] 2xl:w-[900px] flex flex-col lg:flex-row justify-between items-center bg-orange-500 text-white p-4 lg:p-6  rounded-r-md">
               <div className="heading_part_news_part w-full flex items-center">
-                {/* <a href={"/"}>
+                <Link href={"/"}>
                   <img className="absolute" src="/logo_news_page.png" />
-                </a> */}
+                </Link>
                 <h1 className="title_section absolute text-3xl text-center pl-0 2xl:pl-32 xl:pl-24 pt-0 2xl:pt-0 xl:pt-0 lg:pt-0 sm:pt-10 sm:text-4xl lg:text-5xl xl:text-5xl font-bold mb-4 lg:mb-0">
                   {newsletterData?.title_section?.title_one}
                 </h1>

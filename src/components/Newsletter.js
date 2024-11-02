@@ -1,6 +1,7 @@
 "use client"
 
 import { fetchData } from "@/lib/api"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 const Newsletter = () => {
@@ -31,11 +32,11 @@ const Newsletter = () => {
                 <h2 className="text-4xl md:text-4xl lg:text-4xl font-bold mb-2">
                   Subscribe To 
                 </h2>
-                <a href={`/the-pm-newsletter`}>
+                <Link href={`/the-pm-newsletter`}>
                   <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-10 underline text-orange-500 blink">
                   The PM Newsletter!
                   </h2>
-                </a>
+                </Link>
                 <p className="text-gray-300 text-sm sm:text-base mb-8">
                   {contactDeatils?.contact_form_section?.texts}
                 </p>
