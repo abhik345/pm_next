@@ -3,6 +3,7 @@
 import Footer from "@/components/Footer"
 import { fetchData } from "@/lib/api"
 import { useEffect, useState } from "react"
+import Navbar from "@/components/Navbar";
 
 const page = () => {
     const [videoData,setvideoData] = useState([])
@@ -23,6 +24,7 @@ const page = () => {
     },[])
   return (
     <>
+      <Navbar/>
       <div className="main_video_inner">
         <div className="main_banner relative">
           <div className="w-auto m-auto p-0">

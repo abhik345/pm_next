@@ -1,6 +1,8 @@
 "use client"
 import { fetchData } from '@/lib/api'
 import React, { useEffect, useState } from 'react'
+import Navbar from "@/components/Navbar";
+import Footer from '@/components/Footer';
 
 const page = () => {
   const [allBlogData,setAllBlogData] = useState(null)
@@ -29,6 +31,7 @@ const page = () => {
   };
   return (
     <>
+    <Navbar/>
       <section className="post_swiper_main cursor-pointer">
           <div className="main_banner relative">
             <div className="w-auto m-auto p-0">
@@ -169,6 +172,7 @@ const page = () => {
             </div>
           </div>
         </section>
+        <Footer/>
     </>
   )
 }
