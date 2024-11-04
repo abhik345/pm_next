@@ -1,11 +1,10 @@
 "use client"
 
 import { fetchData } from "@/lib/api"
+import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
 
 const Newsletter = () => {
-  const router = useRouter()
     const [contactDeatils,setcontactDeatils] = useState(null)
     useEffect(()=>{
         const fetchContact = async () => {
@@ -23,10 +22,6 @@ const Newsletter = () => {
         fetchContact()
     },[])
 
-    const handlenewsletter=()=>{
-      router.push("/the-pm-newsletter")
-    }
-
   return (
      <>
      <div className="news_letter_part bg-[#272727] text-white pb-10 mx-auto">
@@ -37,11 +32,11 @@ const Newsletter = () => {
                 <h2 className="text-4xl md:text-4xl lg:text-4xl font-bold mb-2">
                   Subscribe To 
                 </h2>
-                <div onClick={handlenewsletter} className="cursor-pointer">
+                <Link href={`/the-pm-newsletter`}>
                   <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-10 underline text-orange-500 blink">
                   The PM Newsletter!
                   </h2>
-                </div>
+                </Link>
                 <p className="text-gray-300 text-sm sm:text-base mb-8">
                   {contactDeatils?.contact_form_section?.texts}
                 </p>
