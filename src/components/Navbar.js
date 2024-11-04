@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { fetchData } from "@/lib/api";
-import Image from "next/image";
+import Link from "next/link";
+// import Image from "next/image";
 
 const Navbar = () => {
   const [data, setData] = useState(null);
@@ -24,18 +25,9 @@ const Navbar = () => {
 
     getData();
   }, []);
-
-  // if (error) {
-  //   return <p>Error loading header</p>;
-  // }
-
-  // if (!data) {
-  //   return <p>Loading...</p>; // Show a loading state while fetching
-  // }
-
   return (
     <header className="flex items-center justify-between absolute px-4 sm:px-6 lg:px-8 bg-transparent w-[100%] z-10">
-      <a href="/">
+      <Link href="/">
         <div className="mt-6 flex items-center cursor-pointer">
           <img
             src={data?.header_logo?.logo_image?.image}
@@ -51,7 +43,7 @@ const Navbar = () => {
             loading="lazy"
           />
         </div>
-      </a>
+      </Link>
       <nav className="flex items-center space-x-4 md:space-x-6 lg:space-x-10">
         <div className="flex flex-row items-center gap-1 md:gap-3 lg:gap-4">
           {data?.social_media_sections &&
