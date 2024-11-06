@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchData } from "@/lib/api";
+
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
+import { fetchData } from "@/lib/api";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [data, setData] = useState(null);
@@ -29,7 +30,7 @@ const Navbar = () => {
     getData();
   }, []);
 
-  if (pathname === "/the-pm-newsletter") {
+  if (pathname === "/the-pm-newsletter" || pathname === "/srk") {
     return null;
   }
 

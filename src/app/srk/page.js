@@ -1,13 +1,16 @@
 import Newpdf from "@/page/Newpdf";
 
-export async function generateMetadata() {
-  // Fetch data from the API
-  const response = await fetch("https://api.pramodmaloo.com/wp-json/wp/v2/pages/10?_fields=acf.pdf&acf_format=standard");
+const response = await fetch("https://api.pramodmaloo.com/wp-json/wp/v2/pages/10?_fields=acf.pdf&acf_format=standard");
   const data = await response.json();
+  // Fetch data from the API
+  
 
   // Extract URLs from the response
   const pdfUrl = data.acf.pdf.pdf_file;
   const screenshotUrl = data.acf.pdf.screenshot;
+
+export async function generateMetadata() {
+  
 
   return {
     title: "Stars come and go... But SRK comes once",
@@ -32,7 +35,7 @@ export async function generateMetadata() {
 const Page = () => {
   return (
     <>
-      <Newpdf />
+      <Newpdf pdf={pdfUrl} />
     </>
   );
 };
