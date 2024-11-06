@@ -1,10 +1,10 @@
-import localFont from "next/font/local";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { Suspense } from "react";
-import Loading from "./loading";
+import "@/app/globals.css";
 
+import Footer from "@/components/Footer";
+import Loading from "./loading";
+import Navbar from "@/components/Navbar";
+import { Suspense } from "react";
+import localFont from "next/font/local";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
