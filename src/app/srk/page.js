@@ -1,27 +1,35 @@
 import Newpdf from "@/page/Newpdf";
 
 export async function generateMetadata() {
+  // Fetch data from the API
+  const response = await fetch("https://api.pramodmaloo.com/wp-json/wp/v2/pages/10?_fields=acf.pdf&acf_format=standard");
+  const data = await response.json();
+
+  // Extract URLs from the response
+  const pdfUrl = data.acf.pdf.pdf_file;
+  const screenshotUrl = data.acf.pdf.screenshot;
+
   return {
-    title: "PDF Viewer - SRK x Pramod Maloo",
-    description: "View the SRK x Pramod Maloo PDF document.",
+    title: "Stars come and go... But SRK comes once",
+    description: "Stars come and go... But SRK comes once, Happens once & Stays Forever!",
     openGraph: {
-      title: "PDF Viewer - SRK x Pramod Maloo",
-      description: "View the SRK x Pramod Maloo PDF document.",
-      url: "/SRKxPramodMalooNew.pdf",
-      type: "article",
+      title: "Stars come and go... But SRK comes once",
+      description: "Stars come and go... But SRK comes once, Happens once & Stays Forever!",
+      url: pdfUrl,
+      type: "website",
       images: [
         {
-          url: "/srk.png",
+          url: screenshotUrl,
           width: 1200,
           height: 630,
-          alt: "PDF document thumbnail",
+          alt: "SRK PDF Thumbnail",
         },
       ],
     },
   };
 }
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <Newpdf />
@@ -29,4 +37,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
