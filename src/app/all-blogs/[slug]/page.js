@@ -1,15 +1,14 @@
 "use client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fetchData } from "@/lib/api";
 import innerImage from "../../../../public/innerImage.jpg";
 import Image from "next/image";
 
 const BlogDetails = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [blogData, setBlogData] = useState(null);
-  const blogId = searchParams.get("id");
+  const blogId = searchParams.get("blog");
 
   useEffect(() => {
     if (blogId) {

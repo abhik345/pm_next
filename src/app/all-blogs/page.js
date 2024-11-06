@@ -3,7 +3,7 @@ import { fetchData } from "@/lib/api";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-const page = () => {
+const AllBlogs = () => {
   const [allBlogData, setAllBlogData] = useState(null);
   useEffect(() => {
     const fetchAllBlogData = async () => {
@@ -67,7 +67,7 @@ const page = () => {
                 const slug = createSlug(data?.title);
                 return (
                   <Link
-                  href={{pathname:`/all-blogs/${slug}`,query:{id:data?.id}}}
+                  href={{pathname:`/all-blogs/${slug}`,query:{blog:data?.id}}}
                     // state={{ id: data?.id, ip }}
                     key={i}
                   >
@@ -83,7 +83,7 @@ const page = () => {
                             </p>
                             <p className="flex items-center gap-2 text-sm text-slate-700">
                               {/* <CalendarDays className="w-5 h-5" /> */}
-                              {data?.date}
+                              {data?.date}  
                             </p>
                           </div>
                         </div>
@@ -173,4 +173,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AllBlogs;

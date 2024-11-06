@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  
-    images: {
-      domains: ['api.pramodmaloo.com'],
-      
-    },
-  };
-  
-  export default nextConfig;
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.pramodmaloo.com',
+        pathname: '/**',
+      },
+    ],
+  },
+};
+
+export default nextConfig;

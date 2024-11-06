@@ -1,29 +1,28 @@
-"use client"
+"use client";
 
-import { fetchData } from "@/lib/api"
-import { useEffect, useState } from "react"
-import Navbar from "@/components/Navbar";
+import { fetchData } from "@/lib/api";
+import { useEffect, useState } from "react";
 
-const page = () => {
-    const [videoData,setvideoData] = useState([])
-    useEffect(()=>{
-        const fetchvideoData = async () => {
-            try {
-                const data =await fetchData('/videos')
-                if (data) {
-                    setvideoData(data)
-                } else {
-                  console.log("failed to fetch videos")  
-                }
-            } catch (error) {
-                console.log(error)
-            }
+const AllVideos = () => {
+  const [videoData, setvideoData] = useState([]);
+  useEffect(() => {
+    const fetchvideoData = async () => {
+      try {
+        const data = await fetchData("/videos");
+        if (data) {
+          setvideoData(data);
+        } else {
+          console.log("failed to fetch videos");
         }
-        fetchvideoData()
-    },[])
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchvideoData();
+  }, []);
   return (
     <>
-      <Navbar/>
+      
       <div className="main_video_inner">
         <div className="main_banner relative">
           <div className="w-auto m-auto p-0">
@@ -48,7 +47,7 @@ const page = () => {
             />
           </div>
         </div>
-        <div className=" all_video_box container mb-4 flex flex-wrap gap-10 2xl:gap-10 xl:gap-8 lg:gap-6 md:gap-8 justify-center items-center overflow-hidden mx-auto `">
+        <div className=" all_video_box container mb-4 p-3 flex flex-wrap gap-10 2xl:gap-10 xl:gap-8 lg:gap-6 md:gap-8 justify-center items-center overflow-hidden mx-auto `">
           {videoData &&
             videoData?.map((video, index) => {
               const videoId = video?.video_url?.split("/").pop();
@@ -84,9 +83,8 @@ const page = () => {
             })}
         </div>
       </div>
-     
     </>
   );
-}
+};
 
-export default page
+export default AllVideos;

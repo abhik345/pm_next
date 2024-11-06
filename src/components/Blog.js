@@ -106,7 +106,7 @@ const Blog = () => {
                 return (
                   <SwiperSlide key={card?.id} className="px-2 py-0">
                     
-                      <Link href={{pathname:`/all-blogs/${slug}`,query:{id:card?.id}}}>
+                      <Link href={{pathname:`/all-blogs/${slug}`,query:{blog:card?.id}}}>
                       <div className="post_box" key={card}>
                         <div className="post_card relative bg-white overflow-hidden">
                           <div className="img_part rounded-2xl overflow-auto">

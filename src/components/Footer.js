@@ -2,9 +2,13 @@
 
 import { fetchData } from "@/lib/api"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const Footer = () => {
+
+  const pathname = usePathname();
+
 
     const [footerDetails,setfooterDetails]= useState(null)
     const [socialIconsData,setsocialIconsData] = useState([])
@@ -40,6 +44,10 @@ const Footer = () => {
         }
         fetchsocialIconsData()
     }, [])
+
+    if (pathname === "/the-pm-newsletter") {
+      return null;
+    }
 
   return (
     <>

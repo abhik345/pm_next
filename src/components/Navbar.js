@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "@/lib/api";
 import Link from "next/link";
-// import Image from "next/image";
+import { usePathname } from "next/navigation"; 
 
 const Navbar = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
+
+  // Get current path
+  const pathname = usePathname();
 
   useEffect(() => {
     const getData = async () => {
@@ -25,6 +28,11 @@ const Navbar = () => {
 
     getData();
   }, []);
+
+  if (pathname === "/the-pm-newsletter") {
+    return null;
+  }
+
   return (
     <header className="flex items-center justify-between absolute px-4 sm:px-6 lg:px-8 bg-transparent w-[100%] z-10">
       <Link href="/">

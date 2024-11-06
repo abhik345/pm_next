@@ -2,7 +2,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-// import { usePathname } from "next/navigation";
+import { Suspense } from "react";
+import Loading from "./loading";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,14 +24,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  // const pathname = usePathname();
+  
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* {pathname !== "/newsletter" && <Navbar />} */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
         <Navbar/>
+        <Suspense fallback={<Loading/>}>
         {children}
+        </Suspense>
         <Footer />
       </body>
     </html>

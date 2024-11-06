@@ -1,12 +1,13 @@
 "use client";
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { fetchData } from "@/lib/api";
 import { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 const Posts = () => {
   const headRef1 = useRef(null);
@@ -82,6 +83,10 @@ const Posts = () => {
         breakpoint: 768,
         settings: { slidesToShow: 1 },
       },
+      {
+        breakpoint: 576,
+        settings: { slidesToShow: 1 },
+      },
     ],
   };
 
@@ -100,6 +105,10 @@ const Posts = () => {
       },
       {
         breakpoint: 768,
+        settings: { slidesToShow: 1 },
+      },
+      {
+        breakpoint: 576,
         settings: { slidesToShow: 1 },
       },
     ],
@@ -158,10 +167,9 @@ const Posts = () => {
             <div className="left_text_Linkedin flex justify-start w-[10%]">
               <Image
                 src="/Instagram_text.png"
-                alt="Instagram" 
+                alt="Instagram"
                 width={50}
                 height={50}
-                
               />
             </div>
             <div className="swiper_part m-auto w-[85%]">
@@ -188,31 +196,21 @@ const Posts = () => {
 
 const LinkedInHoverCard = ({ image, text, icon, link }) => {
   return (
-    <a
+    <Link
       className="overflow-hidden"
       href={link}
       target="_blank"
       rel="noopener noreferrer"
     >
       <div className="main_box">
-        <div className="post_img_box relative">
-          <Image
-            className="post_img object-cover"
+        <div className="post_img_box relative ">
+          <img
+            className="post_img w-screen object-cover h-[400px]"
             src={image}
-            alt="LinkedIn post"
-            layout="responsive"
-            height="50"
-            width="50"
-            style={{ objectFit: "cover" }}
           />
-          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute bottom-0 left-0 right-0 flex items-center cursor-pointer py-10 px-6">
-            <div className="icon flex m-auto items-center w-[100%] h-48 overflow-hidden">
-              <Image
-                src="/linkedin.png"
-                alt="LinkedIn icon"
-                width={48}
-                height={48}
-              />
+          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
+            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
+              <img src="/linkedin.png" />
             </div>
             <p
               className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide"
@@ -221,36 +219,27 @@ const LinkedInHoverCard = ({ image, text, icon, link }) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 
 const InstagramHoverCard = ({ image, text, icon, link }) => {
   return (
-    <a
+    <Link
       className="overflow-hidden"
       href={link}
       target="_blank"
       rel="noopener noreferrer"
     >
       <div className="main_box">
-        <div className="post_img_box relative">
-          <Image
-            className="post_img object-cover"
+        <div className="post_img_box relative ">
+          <img
+            className="post_img w-screen object-cover h-[400px]"
             src={image}
-            alt="Instagram post"
-            layout="responsive"
-            width={0}
-            height={0} 
           />
-          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute bottom-0 left-0 right-0 flex items-center cursor-pointer py-10 px-6">
-            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden">
-              <Image
-                src="/instagram.png"
-                alt="Instagram icon"
-                width={48}
-                height={48}
-              />
+          <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute contents-[*] bottom-0 left-0 right-0 items-center  cursor-pointer py-10 px-6 ">
+            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden  ">
+              <img src="/instagram.png" />
             </div>
             <p
               className="text-white font-normal text-base text-center my-8 px-5 line-clamp-[8] tracking-wide"
@@ -259,7 +248,7 @@ const InstagramHoverCard = ({ image, text, icon, link }) => {
           </div>
         </div>
       </div>
-    </a>
+    </Link>
   );
 };
 

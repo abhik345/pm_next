@@ -1145,6 +1145,7 @@
   @media (max-width:576px) {
     .post_swiper_main .swiper_section {
       gap: 4px !important;
+      overflow: hidden;
     }
   
     .swiper_section .swiper_part {
@@ -1747,7 +1748,7 @@
   }
 
 
-  .next-image {
+  /* .next-image {
     max-width: 100%;
     div {
         position: unset !important;
@@ -1760,4 +1761,22 @@
             max-width: 100% !important;
         }
     }
+} */
+
+
+.container_loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f3f3f3;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.4rem;
+  border-style: solid;
+  border-color: #ff5722 transparent #ff5722 transparent;
+  border-radius: 50%;
 }
