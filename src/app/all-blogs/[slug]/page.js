@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchData } from "@/lib/api";
 import innerImage from "../../../../public/innerImage.jpg";
 import Image from "next/image";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 const BlogDetails = () => {
   const searchParams = useSearchParams();

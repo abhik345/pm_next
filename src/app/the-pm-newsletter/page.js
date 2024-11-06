@@ -4,7 +4,7 @@ import { fetchData } from "@/lib/api"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
-const page = () => {
+const PmNewsLetter = () => {
 
     const [newsletterData,setnewsletterData] = useState(null)
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -157,4 +157,4 @@ const page = () => {
   );
 }
 
-export default page
+export default PmNewsLetter

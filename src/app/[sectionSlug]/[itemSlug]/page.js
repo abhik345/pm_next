@@ -4,7 +4,7 @@ import { fetchData } from "@/lib/api";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-// Assuming you have a Layout component in your Next.js project
+
 
 const InnerGeneraic = () => {
   const pathname = usePathname();

@@ -6,7 +6,7 @@ import { fetchData } from '@/lib/api'
 import { usePathname } from 'next/navigation'
 
 
-const page = () => {
+const BlogDetails = () => {
     const [blogDetails,setblogDetails] = useState(null)
     const pathname= usePathname()
     const id = pathname.split("/").pop()
@@ -38,4 +38,4 @@ const page = () => {
   );
 }
 
-export default page
+export default BlogDetails

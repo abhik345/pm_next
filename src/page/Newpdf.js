@@ -36,7 +36,7 @@ const Newpdf = () => {
           URL.revokeObjectURL(pdfFile);
         }
       };
-    }, []);
+    }, [pdfFile]);
   
     return (
       <div style={{ height: "100vh" }}>
