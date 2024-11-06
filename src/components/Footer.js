@@ -45,7 +45,7 @@ const Footer = () => {
         fetchsocialIconsData()
     }, [])
 
-    if (pathname === "/the-pm-newsletter") {
+    if (pathname === "/the-pm-newsletter" || pathname === "/srk") {
       return null;
     }
 
