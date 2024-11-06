@@ -1745,3 +1745,19 @@
   
     }
   }
+
+
+  .next-image {
+    max-width: 100%;
+    div {
+        position: unset !important;
+        padding: 0px !important;
+        img {
+            position: unset !important;
+            width: 100% !important;
+            height: 100% !important;
+            max-height: 100% !important;
+            max-width: 100% !important;
+        }
+    }
+}

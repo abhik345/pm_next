@@ -1,6 +1,5 @@
 "use client"
 
-import Footer from "@/components/Footer"
 import { fetchData } from "@/lib/api"
 import { useEffect, useState } from "react"
 import Navbar from "@/components/Navbar";
@@ -85,7 +84,7 @@ const page = () => {
             })}
         </div>
       </div>
-      <Footer/>
+     
     </>
   );
 }

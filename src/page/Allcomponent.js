@@ -9,7 +9,6 @@ import Loading from "@/components/Loading";
 import { useState,useEffect } from "react";
 import Brand from "@/components/Brand"
 import Newsletter from "@/components/Newsletter";
-import Footer from "@/components/Footer";
 const AllComponent = () => {
 
     const [loading,setloading] = useState(true)
@@ -33,7 +32,6 @@ const AllComponent = () => {
           <Blog />
           <Posts />
           <Newsletter/>
-          <Footer/>
         </>
       )}
     </>

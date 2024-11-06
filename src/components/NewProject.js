@@ -1,57 +1,76 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
-import { Navigation,Autoplay, A11y } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
+import { Navigation, Autoplay, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 import { fetchData } from "@/lib/api";
 import { useRouter } from "next/navigation";
 
 const NewProject = () => {
+  const router = useRouter();
+  const [projects, setNewProject] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
+  useEffect(() => {
+    const fetchNewProject = async () => {
+      const data = await fetchData("/book");
+      if (data) {
+        setNewProject(data);
+      } else {
+        console.log("failed to fetch api data");
+      }
+    };
+    fetchNewProject();
+  }, []);
 
-  const router = useRouter()
-    const [projects,setNewProject] = useState([])
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
-    useEffect(()=>{
-      const fetchNewProject = async () => {
-        const data = await fetchData('/book')
-        if (data) {
-          setNewProject(data)
-        } else {
-          console.log("failed to fetch api data")
-        }
-      };
-      fetchNewProject()
-    },[])
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 576);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-      useEffect(() => {
-        const handleResize = () => {
-          setIsMobile(window.innerWidth < 576);
-        };
-        window.addEventListener("resize", handleResize);
-        return () => {
-          window.removeEventListener("resize", handleResize);
-        };
-      }, []);
+  const allItems = projects?.reduce((acc, section) => {
+    const itemsWithSubtitle = section.items.map((item) => ({
+      ...item,
+      subtitle: section.subtitle,
+    }));
+    return [...acc, ...itemsWithSubtitle];
+  }, []);
 
-      const allItems = projects?.reduce((acc, section) => {
-        const itemsWithSubtitle = section.items.map((item) => ({
-          ...item,
-          subtitle: section.subtitle,
-        }));
-        return [...acc, ...itemsWithSubtitle];
-      }, []);
-
-      const midpoint = Math.ceil(allItems?.length / 2);
+  const midpoint = Math.ceil(allItems?.length / 2);
   const firstHalf = allItems?.slice(0, midpoint);
   const secondHalf = allItems?.slice(midpoint);
 
-  const handleClickVideos=()=>{
-    router.push("/all-videos")
-  }
+  const handleClickVideos = () => {
+    router.push("/all-videos");
+  };
+
+  const createSlug = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/(^-|-$)/g, "");
+  };
+  
+  const handleClick = (sectionSubtitle, itemSubtitle, sectionId, maintitle) => {
+    const sectionSlug = createSlug(sectionSubtitle);
+    const itemSlug = createSlug(itemSubtitle);
+    const url = `/InnerGenericPage/${sectionSlug}/${itemSlug}`;
+    // router.push(url, {
+    //   state: {
+    //     id: sectionId,
+    //     maintitle: maintitle
+    //   },
+    // });
+    router.push(url)
+  };
 
   return (
     <>
@@ -59,17 +78,12 @@ const NewProject = () => {
         <div className="main_project">
           <div className="container mx-auto px-10 py-14">
             <div className="heading_part_video flex justify-between items-center mb-2">
-              <h2
-                className="main-heading text-[56px] font-bold mb-4"
-              >
+              <h2 className="main-heading text-[56px] font-bold mb-4">
                 <span className="text-[#959595]">Latest</span>{" "}
                 <span className="text-white">Videos</span>
               </h2>
 
-              <div
-                className="button_site"
-                onClick={handleClickVideos}
-              >
+              <div className="button_site" onClick={handleClickVideos}>
                 <button
                   className="font-sans flex justify-center gap-2 items-center mx-auto shadow-xl text-lg text-gray-50 bg-[#f97316] backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-[#FFFFFF] hover:text-black before:-z-10 before:aspect-square before:hover:scale-200 before:hover:duration-500 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group "
                   type="submit"
@@ -113,6 +127,9 @@ const NewProject = () => {
                           <div
                             className="box overflow-hidden relative rounded-xl"
                             key={item.id}
+                            onClick={() =>
+                              handleClick(item.subtitle, item.title, item.id, item.maintitle)
+                            }
                           >
                             <img
                               src={item?.thumbnail}
@@ -203,6 +220,6 @@ const NewProject = () => {
       </div>
     </>
   );
-}
+};
 
-export default NewProject
+export default NewProject;

@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import Link from "next/link";
 
 const Blog = () => {
     const [allBlog,setAllblog] = useState(null)
@@ -33,10 +34,10 @@ const Blog = () => {
         router.push("/all-blogs")
     }
 
-    const handleDetailsClick =(card)=>{
-      const slug = createSlug(card?.title);
-      router.push(`/blogs/${slug}`)
-    }
+    // const handleDetailsClick =(card)=>{
+    //   const slug = createSlug(card?.title);
+    //   router.push(`/all-blogs/${slug}`)
+    // }
     
   return (
     <>
@@ -101,9 +102,11 @@ const Blog = () => {
           >
             {allBlog &&
               allBlog?.map((card) => {
+                const slug = createSlug(card?.title);
                 return (
-                  <SwiperSlide key={card?.id} className="px-2 py-0" onClick={()=>handleDetailsClick(card)}>
+                  <SwiperSlide key={card?.id} className="px-2 py-0">
                     
+                      <Link href={{pathname:`/all-blogs/${slug}`,query:{id:card?.id}}}>
                       <div className="post_box" key={card}>
                         <div className="post_card relative bg-white overflow-hidden">
                           <div className="img_part rounded-2xl overflow-auto">
@@ -135,6 +138,7 @@ const Blog = () => {
                           </div>
                         </div>
                       </div>
+                      </Link>
                     
                   </SwiperSlide>
                 );

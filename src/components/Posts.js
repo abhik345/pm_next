@@ -158,9 +158,10 @@ const Posts = () => {
             <div className="left_text_Linkedin flex justify-start w-[10%]">
               <Image
                 src="/Instagram_text.png"
-                alt="Instagram"
+                alt="Instagram" 
                 width={50}
                 height={50}
+                
               />
             </div>
             <div className="swiper_part m-auto w-[85%]">
@@ -200,11 +201,12 @@ const LinkedInHoverCard = ({ image, text, icon, link }) => {
             src={image}
             alt="LinkedIn post"
             layout="responsive"
-            width={0}
-            height={0} 
+            height="50"
+            width="50"
+            style={{ objectFit: "cover" }}
           />
           <div className="hover_text bg-gray-950 bg-opacity-90 w-full h-full absolute bottom-0 left-0 right-0 flex items-center cursor-pointer py-10 px-6">
-            <div className="icon flex m-auto items-center w-12 h-12 overflow-hidden">
+            <div className="icon flex m-auto items-center w-[100%] h-48 overflow-hidden">
               <Image
                 src="/linkedin.png"
                 alt="LinkedIn icon"
