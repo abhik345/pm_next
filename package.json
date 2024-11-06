@@ -2,12 +2,11 @@
   "name": "pm_next",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+    "scripts": {
+      "dev": "node server.js",
+      "build": "next build",
+      "start": "NODE_ENV=production node server.js"
+    },
   "dependencies": {
     "@gsap/react": "^2.1.1",
     "@react-pdf-viewer/core": "^3.12.0",
