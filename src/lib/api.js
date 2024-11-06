@@ -1,4 +1,4 @@
-const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const NEXT_PUBLIC_API_BASE_URL = "https://api.pramodmaloo.com/wp-json/wp/v2";
 
 export const fetchData = async (endpoint, options = {}) => {
   const url = `${NEXT_PUBLIC_API_BASE_URL}${endpoint}`;

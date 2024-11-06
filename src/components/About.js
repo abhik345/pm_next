@@ -1,7 +1,7 @@
 "use client";
 import { fetchData } from "@/lib/api";
 import { useState, useEffect } from "react";
-
+import Swal from "sweetalert2"
 const About = () => {
   const [email, setEmail] = useState("");
   const [isMobile, setIsMobile] = useState(false);
@@ -48,11 +48,49 @@ const About = () => {
     setEmailError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (!validateEmail(email)) {
-      setEmailError("Please enter a valid email address");
+      setEmailError('Please enter a valid email address');
       return;
+    }
+  
+    setLoading(true);
+    const formData = new FormData();
+    formData.append('_wpcf7', '479');
+    formData.append('_wpcf7_version', '5.9.8');
+    formData.append('_wpcf7_locale', 'en_US');
+    formData.append('_wpcf7_unit_tag', 'wpcf7-f479-o1');
+    formData.append('_wpcf7_container_post', '0');
+    formData.append('subscribe', email);
+  
+    try {
+      const response = await fetch('https://api.pramodmaloo.com/wp-json/contact-form-7/v1/contact-forms/479/feedback', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Subscribed!",
+          text: "You have successfully subscribed to the PM Newsletter.",
+          confirmButtonColor: '#F97316',
+        });
+        setEmail('');
+      } else {
+        throw new Error('Failed to subscribe');
+      }
+    } catch (error) {
+      console.error("Error during form submission:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong! Please try again later.",
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
