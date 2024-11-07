@@ -18,6 +18,8 @@ const Posts = () => {
   const [postsection, setPostSection] = useState(null);
   const [linkedinPost, setLinkedinPost] = useState([]);
   const [instaPost, setInstaPost] = useState([]);
+  const [linkedImage,setLinkedImage]=useState(null);
+  const [instaImage,setInstaImage]=useState(null);
 
   useEffect(() => {
     const fetchPostSection = async () => {
@@ -40,7 +42,8 @@ const Posts = () => {
       try {
         const data = await fetchData("/linkdin-posts");
         if (data) {
-          setLinkedinPost(data);
+          setLinkedinPost(data.posts);
+          setLinkedImage(data.image);
         } else {
           console.log("Failed to fetch LinkedIn posts");
         }
@@ -51,12 +54,15 @@ const Posts = () => {
     fetchLinkedin();
   }, []);
 
+  
+
   useEffect(() => {
     const fetchInsta = async () => {
       try {
         const data = await fetchData("/insta-posts");
         if (data) {
-          setInstaPost(data);
+          setInstaPost(data.posts);
+          setInstaImage(data.image)
         } else {
           console.log("failed to fetch insta posts");
         }
@@ -137,8 +143,8 @@ const Posts = () => {
 
         <div className="swiper_section flex gap-4 items-center">
           <div className="left_text_Linkedin flex justify-end w-[10%]">
-            <Image
-              src="/Linkedin_text.png"
+            <img
+              src={linkedImage}
               alt="LinkedIn"
               width={50}
               height={50}
@@ -165,8 +171,8 @@ const Posts = () => {
         <div className="instagram_swiper mt-16">
           <div className="swiper_section flex flex-row-reverse gap-4 items-center">
             <div className="left_text_Linkedin flex justify-start w-[10%]">
-              <Image
-                src="/Instagram_text.png"
+              <img
+                src={instaImage}
                 alt="Instagram"
                 width={50}
                 height={50}

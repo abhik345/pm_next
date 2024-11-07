@@ -1,4 +1,5 @@
 import AllComponent from "@/page/Allcomponent";
+import Script from "next/script";
 
 export async function generateMetadata() {
   return {
@@ -34,7 +35,8 @@ export default function Home() {
   return (
     <>
       <AllComponent />
-      <script
+      <Script
+        id="gtm"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
