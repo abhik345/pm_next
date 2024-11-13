@@ -34,3 +34,42 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+
+
+
+
+
+
+
+<!-- # DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/pramodmaloo/malo"
+PassengerBaseURI "/"
+PassengerNodejs "/home/pramodmaloo/nodevenv/malo/18/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+# Ensure CSS and JS files are served with the correct MIME type
+AddType text/css .css
+AddType application/javascript .js
+
+# Existing Passenger configuration
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Ensure _next/static, _next/image, and other static resources are served directly
+  RewriteRule ^_next/static/(.*)$ - [L]
+  RewriteRule ^_next/image/(.*)$ - [L]
+  RewriteRule ^static/(.*)$ - [L]
+
+  # Allow direct access to all static image files
+  RewriteRule ^(.*\.(png|jpg|jpeg|gif|svg|webp|ico))$ - [L]
+
+  # Redirect all other requests to the Next.js app
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ /$1 [L]
+</IfModule> -->

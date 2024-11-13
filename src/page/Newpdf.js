@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const Newpdf = ({ pdf }) => {
+const Newpdf = () => {
   const [pdfFile, setPdfFile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,7 +28,6 @@ const Newpdf = ({ pdf }) => {
     fetchPdf();
 
     return () => {
-      // Cleanup only if pdfFile has been set
       if (pdfFile) {
         URL.revokeObjectURL(pdfFile);
       }
