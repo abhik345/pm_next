@@ -3,7 +3,7 @@ const { parse } = require('url');
 const next = require('next');
 
 const port = parseInt(process.env.PORT || '3000', 10);
-const dev = process.env.NODE_ENV !== 'production' 
+const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -12,11 +12,10 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
     handle(req, res, parsedUrl);
   });
-
-  server.listen(port, (err) => {
+  server.listen(port, '0.0.0.0', (err) => {
     if (err) throw err;
     console.log(
-      `> Server listening at http://localhost:${port} as ${
+      `> Server listening at http://0.0.0.0:${port} as ${
         dev ? 'development' : process.env.NODE_ENV
       }`
     );
