@@ -512,7 +512,7 @@ header {
 .main_project .swiper-button-prev::after {
   position: absolute;
   content: "";
-  background-image: url(/assets/arrow.png);
+  background-image: url(/arrow.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

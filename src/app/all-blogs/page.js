@@ -127,7 +127,7 @@ const AllBlogs = () => {
                     const slug = createSlug(data?.title);
                     return (
                       <Link
-                        href={{pathname:`/all-blogs/${slug}`,query:{id:data?.id}}}
+                        href={{pathname:`/all-blogs/${slug}`,query:{blog:data?.id}}}
                         key={i}
                       >
                         <div className="post_box mb-6 p-2">

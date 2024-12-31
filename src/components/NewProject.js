@@ -89,7 +89,7 @@ const NewProject = () => {
               className="main-heading text-[56px] font-bold mb-4"
             >
               <span className="text-[#959595]">Latest</span>{" "}
-              <span className="text-white">Videos</span>
+              <span className="text-black">Videos</span>
             </h2>
 
             <div className="button_site" onClick={handleClickVideos}>
