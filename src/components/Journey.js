@@ -44,13 +44,11 @@ const Journey =  () => {
 
   return (
     <>
-      <section className="about_journey pt-5 pb-20 mb-0" style={{
-        background: `linear-gradient(150deg, rgba(66, 66, 66, 1) 0%, rgba(89, 89, 89, 1) 100%)`
-      }}>
-        <div className="container mx-auto px-10">
-        <h2
+      <section className="about_journey pt-5 pb-20 mb-0 ">
+          <div className="container mx-auto px-10">
+            <h2
               ref={headRef2}
-              className="main-heading text-[36px] font-bold mb-4 md:text-[48px] lg:text-[50px]"
+              className="main-heading text-[36px] font-bold mb-4 md:text-[48px] lg:text-[50px] -pl-5"
             >
               <span className="text-[#959595]">
                 {journeyData?.title_section?.title}
@@ -60,7 +58,7 @@ const Journey =  () => {
               </span>
             </h2>
             <div className="about_new_section col-span-4 flex flex-wrap gap-5 justify-center w-[100%] relative ">
-              <div className="box relative 2xl:h-40 2xl:w-72 xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40  rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72 xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40  rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -75,7 +73,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -90,7 +88,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -105,7 +103,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -120,7 +118,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -135,7 +133,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -150,7 +148,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -165,7 +163,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -180,7 +178,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10">
                 <div className=" top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -196,7 +194,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5">
+              <div className="box relative 2xl:h-40 2xl:w-72  xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 rounded-md px-4 py-5 bg-white z-10 ">
                 <div className=" top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -213,7 +211,7 @@ const Journey =  () => {
               <div className="arow_part absolute z-10">
                 <button className=" ">
                   <img src="/right-arrow.png" />
-                  <p>…and the journey continues!</p>
+                  <p className="absolute 2xl:top-5 2xl:left-14 2xl:w-full xl:top-5 xl:left-14 xl:w-full lg:top-5 lg:left-14 lg:w-full   md:top-5 md:left-14 md:w-full             text-base  ">…and the journey continues!</p>
                 </button>
               </div>
               <div className="background_arrow">
@@ -223,8 +221,8 @@ const Journey =  () => {
                 />
               </div>
             </div>
-        </div>
-      </section>
+          </div>
+        </section>
     </>
   );
 }

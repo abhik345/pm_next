@@ -4,27 +4,35 @@ const next = require('next');
 
 const port = parseInt(process.env.PORT || '3000', 10);
 const dev = process.env.NODE_ENV !== 'production' 
-const app = next({ dev });
+const hostname = dev ? "localhost" : "pramodmaloo.com";
+const app = next({ dev,hostname, port });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  const server = createServer((req, res) => {
-    const parsedUrl = parse(req.url, true);
-    handle(req, res, parsedUrl);
-  });
+  createServer(async (req, res) => {
+    try {
+      // Parse the request URL with query support
+      const parsedUrl = parse(req.url, true);
+      const { pathname, query } = parsedUrl;
 
-  server.listen(port, (err) => {
-    if (err) throw err;
-    console.log(
-      `> Server listening at http://localhost:${port} as ${
-        dev ? 'development' : process.env.NODE_ENV
-      }`
-    );
-  });
-
-  process.on('SIGTERM', () => {
-    server.close(() => {
-      console.log('Server closed');
+      if (pathname === "/a") {
+        await app.render(req, res, "/a", query);
+      } else if (pathname === "/b") {
+        await app.render(req, res, "/b", query);
+      } else {
+        await handle(req, res, parsedUrl);
+      }
+    } catch (err) {
+      console.error("Error occurred handling", req.url, err);
+      res.statusCode = 500; // Corrected assignment
+      res.end("Internal server error");
+    }
+  })
+    .once("error", (err) => {
+      console.error(err);
+      process.exit(1);
+    })
+    .listen(port, () => {
+      console.log(`> Ready on http://${hostname}:${port}`);
     });
-  });
 });
