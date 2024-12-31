@@ -9,6 +9,7 @@ import Loading from "@/components/Loading";
 // import { useState,useEffect } from "react";
 import Brand from "@/components/Brand"
 import Newsletter from "@/components/Newsletter";
+import Awards from "../components/Awards";
 const AllComponent = () => {
 
     // const [loading,setloading] = useState(true)
@@ -29,6 +30,7 @@ const AllComponent = () => {
           <Brand/>
           <Blog />
           <Posts />
+          <Awards/>
           <Newsletter/>
         </>
       

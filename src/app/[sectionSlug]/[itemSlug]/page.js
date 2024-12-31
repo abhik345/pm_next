@@ -53,7 +53,7 @@ const InnerGeneraic = () => {
         <div className="w-auto m-auto p-0">
           <img
             className="w-full object-cover 2xl:h-96 xl:h-96 lg:h-96 md:h-80 sm:h-48"
-            src={innerData?.inner_banner_image || "/assets/inner_banner.jpg"}
+            src={innerData?.inner_banner_image || "/inner_banner.jpg"}
             alt="Banner"
           />
           <div className="inner_text absolute bottom-28 left-20 z-10 md:bottom-20 sm:bottom-5">
