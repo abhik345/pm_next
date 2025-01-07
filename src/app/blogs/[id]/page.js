@@ -26,7 +26,7 @@ const BlogDetails = () => {
     }
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="img_box_blog">
         <img
           src={blogDetails?.blog_details?.thumbnail}

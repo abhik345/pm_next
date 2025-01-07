@@ -10,6 +10,7 @@ import Loading from "@/components/Loading";
 import Brand from "@/components/Brand"
 import Newsletter from "@/components/Newsletter";
 import Awards from "../components/Awards";
+import CTAButton from "../components/CTAButton";
 const AllComponent = () => {
 
     // const [loading,setloading] = useState(true)
@@ -32,6 +33,7 @@ const AllComponent = () => {
           <Posts />
           <Awards/>
           <Newsletter/>
+          <CTAButton/>
         </>
       
     </>
