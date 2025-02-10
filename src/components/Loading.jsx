@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from "react";
 import gsap from "gsap";

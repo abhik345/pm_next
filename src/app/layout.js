@@ -1,9 +1,7 @@
 import "./globals.css";
 
 import Footer from "@/components/Footer";
-import Loading from "./loading";
 import Navbar from "@/components/Navbar";
-import { Suspense } from "react";
 import localFont from "next/font/local";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
@@ -28,7 +26,7 @@ export default function RootLayout({ children }) {
       >
         <SmoothScrolling>
           <Navbar />
-          <Suspense fallback={<Loading />}>{children}</Suspense>
+          {children}
           <Footer />
         </SmoothScrolling>
       </body>

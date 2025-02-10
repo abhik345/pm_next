@@ -2,9 +2,20 @@
 
 import { fetchData } from "@/lib/api";
 import { useEffect, useState } from "react";
+import Loading from "@/components/Loading.jsx"
 
 const AllVideos = () => {
+
+  const [isLoading, setIsLoading] = useState(true);
   const [videoData, setvideoData] = useState([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const fetchvideoData = async () => {
       try {
@@ -22,8 +33,10 @@ const AllVideos = () => {
   }, []);
   return (
     <>
-      
-      <div className="main_video_inner">
+      { isLoading ? (
+        <Loading onComplete={() => setIsLoading(false)} />
+      ) : (
+        <div className="main_video_inner">
         <div className="main_banner relative">
           <div className="w-auto m-auto p-0">
             <img
@@ -83,6 +96,7 @@ const AllVideos = () => {
             })}
         </div>
       </div>
+      )}
     </>
   );
 };
