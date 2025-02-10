@@ -16,7 +16,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const NewProject = () => {
   const router = useRouter();
   const [projects, setNewProject] = useState([]);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
 
   const headRef2 = useRef(null);
 
