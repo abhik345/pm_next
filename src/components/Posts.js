@@ -49,56 +49,41 @@ const Posts = () => {
   const [instaImage,setInstaImage]=useState(null);
 
   useEffect(() => {
-    const fetchPostSection = async () => {
+    const fetchDataForPosts = async () => {
       try {
-        const data = await fetchData("/pages/10?_fields=acf.posts_options");
-        if (data) {
-          setPostSection(data?.acf);
+        const [postSectionData, linkedinData, instaData] = await Promise.all([
+          fetchData("/pages/10?_fields=acf.posts_options"),
+          fetchData("/linkdin-posts"),
+          fetchData("/insta-posts"),
+        ]);
+
+        if (postSectionData) {
+          setPostSection(postSectionData?.acf);
         } else {
           console.log("Failed to fetch Post section data");
         }
-      } catch (error) {
-        console.log("Error fetching post section:", error);
-      }
-    };
-    fetchPostSection();
-  }, []);
 
-  useEffect(() => {
-    const fetchLinkedin = async () => {
-      try {
-        const data = await fetchData("/linkdin-posts");
-        if (data) {
-          setLinkedinPost(data.posts);
-          setLinkedImage(data.image);
+        if (linkedinData) {
+          setLinkedinPost(linkedinData.posts);
+          setLinkedImage(linkedinData.image);
         } else {
           console.log("Failed to fetch LinkedIn posts");
         }
-      } catch (error) {
-        console.log("Error fetching LinkedIn posts:", error);
-      }
-    };
-    fetchLinkedin();
-  }, []);
 
-  
-
-  useEffect(() => {
-    const fetchInsta = async () => {
-      try {
-        const data = await fetchData("/insta-posts");
-        if (data) {
-          setInstaPost(data.posts);
-          setInstaImage(data.image)
+        if (instaData) {
+          setInstaPost(instaData.posts);
+          setInstaImage(instaData.image);
         } else {
-          console.log("failed to fetch insta posts");
+          console.log("Failed to fetch Insta posts");
         }
       } catch (error) {
-        console.log("Error fetching Insta posts:", error);
+        console.log("Error fetching post data:", error);
       }
     };
-    fetchInsta();
+
+    fetchDataForPosts();
   }, []);
+
 
   const linkedinSettings = {
     infinite: true,
