@@ -47,8 +47,10 @@ const TrendingPart = () => {
                 <div className="problem_box 2xl:gap-4 xl:gap-4 lg:gap-4 md:gap-4 sm:gap-12 kx:gap-12 km:gap-12 flex 2xl:flex-nowrap xl:flex-nowrap lg:flex-nowrap md:flex-nowrap sm:flex-wrap kx:flex-wrap km:flex-wrap">
                   {getProblemSolutionData &&
                     getProblemSolutionData?.acf?.problem_solution_framework?.problem_solution?.map(
-                      (problem, index) => (
-                        <div key={index} className="cross_box relative">
+                      (problem, index) => {
+                          const tick = index %2 ==!0
+                        return (
+                          <div key={index} className="cross_box relative">
                           <h5 className=" absolute -top-4 left-8 font-semibold text-white text-2xl bg-[#3c3c3c] px-2 ">
                             {problem?.problem_text}
                           </h5>
@@ -64,12 +66,13 @@ const TrendingPart = () => {
                             >
                               <path
                                 fill="#fff"
-                                d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z"
+                                d = {tick ? "M13.854 3.146a.5.5 0 0 0-.708 0L6 9.293 3.854 7.146a.5.5 0 0 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7a.5.5 0 0 0 0-.708z" :"M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z"}
                               />
                             </svg>
                           </div>
                         </div>
-                      )
+                        )
+                      }
                     )}
                 </div>
               </div>

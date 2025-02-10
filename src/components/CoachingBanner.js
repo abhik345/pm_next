@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { slideAnimation } from "@/components/slideAnimation";
 import { useState, useEffect, useRef } from "react";
 import { fetchData } from "@/lib/api";
+import DecryptedText from "@/components/DecryptedText.jsx";
 import { useInView } from "framer-motion";
-import DecryptedText from "@/components/DecryptedText";
 
 export const sentenceVariants = {
   hidden: {},
@@ -23,7 +23,7 @@ export const TypewriterComponent = ({ text }) => (
     initial="hidden"
     animate="visible"
   >
-    {text?.split("").map((char, i) => (
+    {text?.split("")?.map((char, i) => (
       <motion.span key={`${char}-${i}`} variants={letterVariants}>
         {char}
       </motion.span>
@@ -31,7 +31,7 @@ export const TypewriterComponent = ({ text }) => (
   </motion.p>
 );
 const CoachingBanner = () => {
-  const ref = useRef(null);
+  const ref = useRef();
   const isInView = useInView(ref, { once: true });
 
   const [bannerData, setBannerData] = useState(null);
@@ -70,6 +70,7 @@ const CoachingBanner = () => {
           >
             <h2 className="text-5xl 2xl:text-5xl xl:text-4xl lg:text-2xl md:text-xl sm:text-lg kx:text-base km:text-base 2xl:font-bold xl:font-bold lg:font-bold md:font-bold sm:font-bold kx:font-semibold km:font-semibold text-white relative 2xl:!leading-[50px] xl:!leading-[50px] lg:!leading-[40px] md:!leading-[30px] sm:!leading-[30px] kx:!leading-[20px] km:!leading-[20px] 2xl:left-28 xl:left-28 lg:left-28 md:left-28 sm:left-28 kx:left-0 km:left-0 2xl:w-[60%] xl:w-[60%] lg:w-[50%] md:w-[50%] sm:w-[70%] kx:w-[80%] km:w-[80%]">
               <div className="left_line absolute top-6 -left-28 bg-white h-[1.5px] w-24"></div>
+
               <DecryptedText
                 text={combinedTitle}
                 speed={150}
