@@ -75,7 +75,7 @@ const Journey =  () => {
                 </p>
               </div>
 
-              <div className="box relative 3xl:w-80  2xl:h-40 2xl:w-72 xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 kx:h-28 km:h-28 kx:w-44 km:w-44  rounded-md px-4 py-5 bg-white z-10">
+              <div className="box relative 3xl:w-80  2xl:h-40 2xl:w-72 xl:h-40 xl:w-60 lg:h-40 lg:w-60 md:h-40 md:w-48 sm:w-44 sm:h-40 kx:h-28 km:h-[130px] kx:w-44 km:w-[150px]  rounded-md px-4 py-5 bg-white z-10">
                 <div className="  top_date_img_part flex justify-around">
                   <img
                     className=" absolute left-4 w-14 h-14"
@@ -218,7 +218,7 @@ const Journey =  () => {
               </div>
               <div className="rounded_images">
               <img
-                  className=" rounded_images absolute 3xl:-right-20 2xl:-right-20 xl:right-[16px] lg:right-0 lg:left-0  2xl:-top-[9px] xl:-top-[-27px] lg:-top[30px] md:top-0 md:left-0  lg:bottom-[64px] 3xl:w-[75%] 2xl:w-[80%] xl:w-[80%] lg:w-[80%] md:w-[80%] 3xl:h-auto 2xl:h-auto xl:h-auto lg:h-full md:h-full sm:h-[95%]  mx-auto 2xl:left-[10px] sm:left-0 sm:right-0 sm:top-0 2xl:block xl:block lg:block md:block sm:block kx:none km:none"
+                  className=" rounded_images absolute 3xl:-right-20 2xl:-right-20 xl:right-[16px] lg:right-0 lg:left-0  2xl:-top-[9px] xl:-top-[-27px] lg:-top[30px] md:top-0 md:left-0  lg:bottom-[64px] 3xl:w-[75%] 2xl:w-[80%] xl:w-[80%] lg:w-[80%] md:w-[80%] 3xl:h-auto 2xl:h-auto xl:h-auto lg:h-full md:h-full sm:h-[95%]  mx-auto 2xl:left-[10px] sm:left-0 sm:right-0 sm:top-0 2xl:block xl:block lg:block md:block sm:block kx:hidden km:hidden"
                   src="/line_about.png"
                 />
               </div>

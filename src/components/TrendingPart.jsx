@@ -92,7 +92,7 @@ const TrendingPart = () => {
                   <div className="rounded_text_new absolute left-40 bottom-16">
                     <div className="rounded_text  bg-white p-0 flex rounded-full w-48 h-48 items-center justify-center relative">
                       <svg
-                        className="absolute w-[220px] h-[220px] animate-spin"
+                        className="absolute w-[220px] h-[220px] animate-rotate"
                         viewBox="0 0 300 300"
                       >
                         <path
