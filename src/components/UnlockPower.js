@@ -31,11 +31,15 @@ const UnlockPower = () => {
                     ?.unlock_coaching_opportunities?.headings?.title_1
                 }
               </h2>
-              <h3 className="2xl:text-4xl xl:text-lg lg:text-lg md:text-base sm:text-base kx:text-xs km:text-xs font-medium text-gray-400  sm:hidden 2xl:line-clamp-2 xl:line-clamp-2 lg:line-clamp-2 md:line-clamp-2 sm:line-clamp-2 kx:line-clamp-2 km:line-clamp-2">
-                {
-                  getCoachingOpportunitiesData?.acf
-                    ?.unlock_coaching_opportunities?.headings?.title_2
-                }
+              <h3 className="2xl:text-4xl xl:text-3xl lg:text-3xl md:text-2xl sm:text-lg kx:text-base km:text-base font-medium text-gray-400  sm:hidden 2xl:line-clamp-2 xl:line-clamp-2 lg:line-clamp-2 md:line-clamp-2 sm:line-clamp-2 kx:line-clamp-none km:line-clamp-none !flex  justify-center items-center gap-4 capitalize">
+                {/* <div className="line_width bg-black h-[1.5px] w-24"></div> */}
+                <span>
+                  {
+                    getCoachingOpportunitiesData?.acf
+                      ?.unlock_coaching_opportunities?.headings?.title_2
+                  }
+                </span>
+                {/* <div className="line_width  bg-black h-[1.5px] w-24"></div> */}
               </h3>
               <p className="text-base font-normal text-gray-700 py-6 2xl:px-24 xl:px-24 lg:px-20 md:px-14 sm:px-10 kx:px-1 km:px-1 line-clamp-2 ">
                 {
@@ -50,11 +54,11 @@ const UnlockPower = () => {
                   (opportunity, index) => (
                     <div
                       key={index}
-                      className="unlock_box text-center 2xl:w-[388px] xl:w-[388px] lg:w-[350px] md:w-[350px] sm:w-[290px] kx:w-[350px] km:w-[350px] h-auto p-5 "
+                      className="unlock_box text-center 3xl:w-[405px] 2xl:w-[388px] xl:w-[388px] lg:w-[350px] md:w-[350px] sm:w-[290px] kx:w-[350px] km:w-[350px] 2xl:h-auto xl:h-auto lg:h-auto md:h-auto sm:h-auto kx:h-[240px] km:h-[240px] p-5 "
                     >
                       <div className="icon_box bg-yellow-200 mx-auto my-4 w-16 h-16 flex justify-center items-center rounded-md">
                         <img
-                          className="bg-yellow-600 w-12 h-12 p-2 m-2 rounded-md"
+                          className="bg-[#FF8B00] w-12 h-12 p-2 m-2 rounded-md"
                           src={opportunity?.icon}
                         />
                       </div>
@@ -62,7 +66,7 @@ const UnlockPower = () => {
                         <h3 className="text-xl font-semibold text-gray-900 line-clamp-2 my-2">
                           {opportunity?.title}
                         </h3>
-                        <p className="text-sm font-normal py-2 line-clamp-3 text-gray-500">
+                        <p className="text-sm font-normal my-2 text-gray-500">
                           {opportunity?.texts}
                         </p>
                       </div>

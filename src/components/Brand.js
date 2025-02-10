@@ -1,12 +1,46 @@
 
 "use client"
 import { fetchData } from '@/lib/api';
-import { useState, useEffect } from 'react';
-
+import { useState, useEffect,useRef } from 'react';
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronRight } from "lucide-react";
 
 const Brands = () => {
   const [brandData, setBrandData] = useState(null);
+
+  const headRef1 = useRef();
+  const headRef2 = useRef();
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from(headRef1.current, {
+      scrollTrigger: {
+        trigger: headRef1.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -1000,
+      opacity: 1,
+      duration: 3,
+    });
+
+    gsap.from(headRef2.current, {
+      scrollTrigger: {
+        trigger: headRef2.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -100,
+      opacity: 1,
+      duration: 2,
+    });
+  });
+
 
   useEffect(() => {
     const fetchBrandData = async () => {
@@ -27,10 +61,10 @@ const Brands = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 xl:gap-8">
             <div className="col-span-1 md:col-span-2 lg:col-span-2 text-white">
               <div className="text-left">
-                <h3 className="cite-with-line text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] font-medium">
+                <h3 ref={headRef1} className="cite-with-line text-[18px] sm:text-[20px] md:text-[24px] lg:text-[28px] font-medium">
                   {brandData?.heading}
                 </h3>
-                <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+                <h2 ref={headRef2} className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
                   <span className="text-[#959595]">
                     {brandData?.title_section?.title}{" "}
                   </span>

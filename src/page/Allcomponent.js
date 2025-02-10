@@ -5,7 +5,6 @@ import Blog from "@/components/Blog";
 import Journey from "@/components/Journey";
 import NewProject from "@/components/NewProject";
 import Posts from "@/components/Posts";
-import Loading from "@/components/Loading";
 // import { useState,useEffect } from "react";
 import Brand from "@/components/Brand"
 import Newsletter from "@/components/Newsletter";

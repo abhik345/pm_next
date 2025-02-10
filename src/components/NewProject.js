@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import { Navigation, Autoplay, A11y, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,11 +9,45 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { fetchData } from "@/lib/api"; // Ensure this API utility function is correctly defined
 import { useRouter } from "next/navigation";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const NewProject = () => {
   const router = useRouter();
   const [projects, setNewProject] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+
+  const headRef1 = useRef(null);
+  const headRef2 = useRef(null);
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from(headRef1.current, {
+      scrollTrigger: {
+        trigger: headRef1.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -1000,
+      opacity: 1,
+      duration: 3,
+    });
+
+    gsap.from(headRef2.current, {
+      scrollTrigger: {
+        trigger: headRef2.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -100,
+      opacity: 1,
+      duration: 2,
+    });
+  });
 
   // Fetch project data from API when component is mounted
   useEffect(() => {
@@ -36,7 +70,7 @@ const NewProject = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 576);
-      const handleResize = () => setIsMobile(window.innerWidth < 576);
+      const handleResize = () => setIsMobile(`${window.innerWidth < 576}`);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
@@ -81,15 +115,15 @@ const NewProject = () => {
 
   return (
     <div>
-      <div className="main_project">
+      <div className="main_project bg-[#424242]">
         <div className="container mx-auto px-10 py-14">
           <div className="heading_part_video flex justify-between items-center mb-2">
             <h2
-              // ref={headRef2}
+              ref={headRef2}
               className="main-heading text-[56px] font-bold mb-4"
             >
               <span className="text-[#959595]">Latest</span>{" "}
-              <span className="text-black">Videos</span>
+              <span className="text-white">Videos</span>
             </h2>
 
             <div className="button_site" onClick={handleClickVideos}>

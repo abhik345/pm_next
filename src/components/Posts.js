@@ -4,16 +4,43 @@ import "slick-carousel/slick/slick-theme.css";
 import { fetchData } from "@/lib/api";
 import { useEffect, useState, useRef } from "react";
 import Slider from "react-slick";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+
 
 const Posts = () => {
   const headRef1 = useRef(null);
   const headRef2 = useRef(null);
 
   gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.from(headRef1.current, {
+      scrollTrigger: {
+        trigger: headRef1.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -1000,
+      opacity: 1,
+      duration: 3,
+    });
+
+    gsap.from(headRef2.current, {
+      scrollTrigger: {
+        trigger: headRef2.current,
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1,
+      },
+      x: -100,
+      opacity: 1,
+      duration: 2,
+    });
+  });
 
   const [postsection, setPostSection] = useState(null);
   const [linkedinPost, setLinkedinPost] = useState([]);
@@ -123,7 +150,7 @@ const Posts = () => {
   return (
     <>
       <section className="post_swiper_main">
-        <div className="container mx-auto px-2 py-6 text-left">
+      <div className="container mx-auto px-2 py-6 text-left ">
           <h3
             ref={headRef1}
             className="heading-with-line text-[20px] font-medium text-left"
@@ -132,7 +159,7 @@ const Posts = () => {
           </h3>
           <h2
             ref={headRef2}
-            className="main-heading text-[56px] font-bold mb-4"
+            className="main-heading 2xl:text-[56px] xl:text-[56px] lg:text-[56px] md:text-5xl sm:text-4xl kx:text-3xl km:text-3xl font-bold mb-4"
           >
             <span className="text-[#959595]">
               {postsection?.posts_options?.title_section?.title}
