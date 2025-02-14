@@ -3,7 +3,6 @@ import { fetchData } from "@/lib/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import Loading from "@/components/Loading.jsx"
 
 const PmNewsLetter = () => {
   const [newsletterData, setnewsletterData] = useState(null);
@@ -11,14 +10,6 @@ const PmNewsLetter = () => {
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [isloading,setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const fetchNewsletter = async () => {
@@ -50,37 +41,40 @@ const PmNewsLetter = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!validateEmail(email)) {
-      setEmailError('Please enter a valid email address');
+      setEmailError("Please enter a valid email address");
       return;
     }
-  
+
     setLoading(true);
     const formData = new FormData();
-    formData.append('_wpcf7', '479');
-    formData.append('_wpcf7_version', '5.9.8');
-    formData.append('_wpcf7_locale', 'en_US');
-    formData.append('_wpcf7_unit_tag', 'wpcf7-f479-o1');
-    formData.append('_wpcf7_container_post', '0');
-    formData.append('subscribe', email);
-  
+    formData.append("_wpcf7", "479");
+    formData.append("_wpcf7_version", "5.9.8");
+    formData.append("_wpcf7_locale", "en_US");
+    formData.append("_wpcf7_unit_tag", "wpcf7-f479-o1");
+    formData.append("_wpcf7_container_post", "0");
+    formData.append("subscribe", email);
+
     try {
-      const response = await fetch('https://api.pramodmaloo.com/wp-json/contact-form-7/v1/contact-forms/479/feedback', {
-        method: 'POST',
-        body: formData,
-      });
-  
+      const response = await fetch(
+        "https://api.pramodmaloo.com/wp-json/contact-form-7/v1/contact-forms/479/feedback",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
       if (response.ok) {
         Swal.fire({
           icon: "success",
           title: "Subscribed!",
           text: "You have successfully subscribed to the PM Newsletter.",
-          confirmButtonColor: '#F97316',
+          confirmButtonColor: "#F97316",
         });
-        setEmail('');
+        setEmail("");
       } else {
-        throw new Error('Failed to subscribe');
+        throw new Error("Failed to subscribe");
       }
     } catch (error) {
       console.error("Error during form submission:", error);
@@ -100,11 +94,7 @@ const PmNewsLetter = () => {
 
   return (
     <>
-      {
-        isloading ? (
-          <Loading Loading onComplete={() => setIsLoading(false)} />
-        ): (
-          <section className="">
+      <section className="">
         <div className="top_heading_part bg-orange-500 h-[130px] text-center">
           <div className="container mx-auto">
             <div className="heading_part_news_part w-full ">
@@ -207,8 +197,6 @@ const PmNewsLetter = () => {
           </div>
         </div>
       </section>
-        )
-      }
     </>
   );
 };
