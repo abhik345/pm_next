@@ -59,7 +59,7 @@ export default function CategorySelector({ tabsData }) {
             </motion.div>
 
             <hr className="border-t border-gray-800" />
-            <div className="space-y-3">
+            <div className="space-y-3 flex flex-col flex-nowrap gap-2">
               {spiritualServices.map((service) => (
                 <motion.div
                   key={service.id}

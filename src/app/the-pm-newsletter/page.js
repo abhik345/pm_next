@@ -3,6 +3,7 @@ import { fetchData } from "@/lib/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import Loading from "@/components/Loading.jsx"
 
 const PmNewsLetter = () => {
   const [newsletterData, setnewsletterData] = useState(null);
@@ -10,6 +11,15 @@ const PmNewsLetter = () => {
   const [emailError, setEmailError] = useState("");
   const [loading, setLoading] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isloading,setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const fetchNewsletter = async () => {
       try {
@@ -90,7 +100,11 @@ const PmNewsLetter = () => {
 
   return (
     <>
-      <section className="">
+      {
+        isloading ? (
+          <Loading Loading onComplete={() => setIsLoading(false)} />
+        ): (
+          <section className="">
         <div className="top_heading_part bg-orange-500 h-[130px] text-center">
           <div className="container mx-auto">
             <div className="heading_part_news_part w-full ">
@@ -193,6 +207,8 @@ const PmNewsLetter = () => {
           </div>
         </div>
       </section>
+        )
+      }
     </>
   );
 };
