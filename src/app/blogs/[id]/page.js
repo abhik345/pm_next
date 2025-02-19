@@ -1,7 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import Navbar from '@/components/Navbar'
-// import Footer from '@/components/Footer'
 import { fetchData } from '@/lib/api'
 import { usePathname } from 'next/navigation'
 
@@ -26,7 +24,6 @@ const BlogDetails = () => {
     }
   return (
     <>
-      {/* <Navbar /> */}
       <div className="img_box_blog">
         <img
           src={blogDetails?.blog_details?.thumbnail}

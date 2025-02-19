@@ -89,19 +89,19 @@ const BlogDetails = () => {
   return (
     <>
       <div className="main_banner relative">
-        <div className="w-auto m-auto p-0">
-          <img
-            className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"
-            // src={innerBanner}
-            alt="Banner"
-          />
-          {/* <div className="inner_text absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:bottom-28 lg:left-20 z-10">
+          <div className="w-auto m-auto p-0">
+            <img
+              className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"
+              src="/innerBanner.png"
+              alt="Banner"
+            />
+            {/* <div className="inner_text absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:bottom-28 lg:left-20 z-10">
                 <p className="text-white text-2xl sm:text-xl md:text-3xl lg:text-4xl font-semibold">
                   lorem ipsum dolar
                 </p>
               </div> */}
+          </div>
         </div>
-      </div>
 
       {/* {showNews && isDialogOpen && (
           <div className="overlay">
