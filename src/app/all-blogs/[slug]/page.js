@@ -1,18 +1,21 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchData } from "@/lib/api";
 import innerImage from "../../../../public/innerImage.jpg";
 import Image from "next/image";
 import Swal from "sweetalert2";
 
 const BlogDetails = () => {
+
+  const blogdetailsref = useRef(null)
   const searchParams = useSearchParams();
   const [blogData, setBlogData] = useState(null);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const blogId = searchParams.get("blog");
+
 
   useEffect(() => {
     if (blogId) {
@@ -27,6 +30,14 @@ const BlogDetails = () => {
       fetchBlogData();
     }
   }, [blogId]);
+
+  useEffect(()=>{
+    if (blogdetailsref.current) {
+      setTimeout(()=>{
+        blogdetailsref.current.scrollIntoView({behavior : "smooth", block : "start"})
+      },500)
+    }
+  },[])
 
   if (!blogData) return <p>Loading...</p>;
 
@@ -88,7 +99,7 @@ const BlogDetails = () => {
 
   return (
     <>
-      <div className="main_banner relative">
+      <div className="main_banner relative" ref={blogdetailsref}>
           <div className="w-auto m-auto p-0">
             <img
               className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"

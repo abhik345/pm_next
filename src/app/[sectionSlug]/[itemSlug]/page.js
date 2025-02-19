@@ -2,17 +2,24 @@
 
 import { fetchData } from "@/lib/api";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import ReactPlayer from "react-player";
 
 
 const InnerGeneraic = () => {
+  const iframeRef = useRef(null);
   const pathname = usePathname();
   const pathSegments = pathname.split("/");
   const lastSegment = pathSegments[pathSegments.length - 1];
   const slug = lastSegment.replace(/_/g, "-");
 
   const [innerData, setInnerData] = useState(null);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      iframeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [innerData]);
 
   useEffect(() => {
     const fetchTotal = async () => {
@@ -49,7 +56,7 @@ const InnerGeneraic = () => {
 
   return (
     <>
-      <div className="main_banner relative">
+      <div className="main_banner relative" ref={iframeRef}>
         <div className="w-auto m-auto p-0">
           <img
             className="w-full object-cover 2xl:h-96 xl:h-96 lg:h-96 md:h-80 sm:h-48"

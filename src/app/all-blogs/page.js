@@ -21,7 +21,9 @@ const AllBlogs = () => {
 
   useEffect(() => {
     if (iframeRef.current) {
-      iframeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        iframeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 500);
     }
   }, []);
 
@@ -45,8 +47,8 @@ const AllBlogs = () => {
   };
   return (
     <>
-      <section className="post_swiper_main cursor-pointer">
-        <div className="main_banner relative" ref={iframeRef}>
+      <section className="post_swiper_main cursor-pointer"ref={iframeRef}>
+        <div className="main_banner relative">
           <div className="w-auto m-auto p-0">
             <img
               className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"

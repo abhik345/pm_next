@@ -1,20 +1,12 @@
 "use client";
 
 import { fetchData } from "@/lib/api";
-import { useEffect, useState } from "react";
-import Loading from "@/components/Loading.jsx"
+import { useEffect, useState,useRef } from "react";
 
 const AllVideos = () => {
-
-  const [isLoading, setIsLoading] = useState(true);
+  const dataRef = useRef();
   const [videoData, setvideoData] = useState([]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     const fetchvideoData = async () => {
@@ -31,12 +23,15 @@ const AllVideos = () => {
     };
     fetchvideoData();
   }, []);
+
+  useEffect(() => {
+    if (dataRef.current) {
+      dataRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [videoData]);
   return (
     <>
-      { isLoading ? (
-        <Loading onComplete={() => setIsLoading(false)} />
-      ) : (
-        <div className="main_video_inner">
+      <div className="main_video_inner" ref={dataRef}>
         <div className="main_banner relative">
           <div className="w-auto m-auto p-0">
             <img
@@ -96,7 +91,6 @@ const AllVideos = () => {
             })}
         </div>
       </div>
-      )}
     </>
   );
 };
