@@ -1,9 +1,11 @@
 "use client";
 import { fetchData } from "@/lib/api";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
 const AllBlogs = () => {
+  const iframeRef = useRef(null);
+
   const [allBlogData, setAllBlogData] = useState(null);
   useEffect(() => {
     const fetchAllBlogData = async () => {
@@ -15,6 +17,12 @@ const AllBlogs = () => {
       }
     };
     fetchAllBlogData();
+  }, []);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      iframeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, []);
 
   const TruncatedText = ({ text, maxLength }) => {
@@ -38,11 +46,11 @@ const AllBlogs = () => {
   return (
     <>
       <section className="post_swiper_main cursor-pointer">
-        <div className="main_banner relative">
+        <div className="main_banner relative" ref={iframeRef}>
           <div className="w-auto m-auto p-0">
             <img
               className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"
-              // src={innerBanner}
+              src="/innerBanner.png"
               alt="Banner"
             />
             {/* <div className="inner_text absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:bottom-28 lg:left-20 z-10">
@@ -67,7 +75,10 @@ const AllBlogs = () => {
                 const slug = createSlug(data?.title);
                 return (
                   <Link
-                  href={{pathname:`/all-blogs/${slug}`,query:{blog:data?.id}}}
+                    href={{
+                      pathname: `/all-blogs/${slug}`,
+                      query: { blog: data?.id },
+                    }}
                     // state={{ id: data?.id, ip }}
                     key={i}
                   >
@@ -83,7 +94,7 @@ const AllBlogs = () => {
                             </p>
                             <p className="flex items-center gap-2 text-sm text-slate-700">
                               {/* <CalendarDays className="w-5 h-5" /> */}
-                              {data?.date}  
+                              {data?.date}
                             </p>
                           </div>
                         </div>
@@ -127,7 +138,10 @@ const AllBlogs = () => {
                     const slug = createSlug(data?.title);
                     return (
                       <Link
-                        href={{pathname:`/all-blogs/${slug}`,query:{blog:data?.id}}}
+                        href={{
+                          pathname: `/all-blogs/${slug}`,
+                          query: { blog: data?.id },
+                        }}
                         key={i}
                       >
                         <div className="post_box mb-6 p-2">
