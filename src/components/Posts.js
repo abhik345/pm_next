@@ -58,7 +58,7 @@ const Posts = () => {
         ]);
 
         if (postSectionData) {
-          setPostSection(postSectionData?.acf);
+          setPostSection(postSectionData?.acf?.posts_options);
         } else {
           console.log("Failed to fetch Post section data");
         }

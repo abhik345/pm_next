@@ -2,20 +2,18 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { fetchData } from "@/lib/api";
-import innerImage from "../../../../public/innerImage.jpg";
+// import innerImage from "../../../../public/innerImage.jpg";
 import Image from "next/image";
 import Swal from "sweetalert2";
 
 const BlogDetails = () => {
-
-  const blogdetailsref = useRef(null)
+  const blogdetailsref = useRef(null);
   const searchParams = useSearchParams();
   const [blogData, setBlogData] = useState(null);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const blogId = searchParams.get("blog");
-
 
   useEffect(() => {
     if (blogId) {
@@ -31,13 +29,16 @@ const BlogDetails = () => {
     }
   }, [blogId]);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (blogdetailsref.current) {
-      setTimeout(()=>{
-        blogdetailsref.current.scrollIntoView({behavior : "smooth", block : "start"})
-      },500)
+      setTimeout(() => {
+        blogdetailsref.current.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 500);
     }
-  },[])
+  }, []);
 
   if (!blogData) return <p>Loading...</p>;
 
@@ -53,37 +54,40 @@ const BlogDetails = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!validateEmail(email)) {
-      setEmailError('Please enter a valid email address');
+      setEmailError("Please enter a valid email address");
       return;
     }
-  
+
     setLoading(true);
     const formData = new FormData();
-    formData.append('_wpcf7', '479');
-    formData.append('_wpcf7_version', '5.9.8');
-    formData.append('_wpcf7_locale', 'en_US');
-    formData.append('_wpcf7_unit_tag', 'wpcf7-f479-o1');
-    formData.append('_wpcf7_container_post', '0');
-    formData.append('subscribe', email);
-  
+    formData.append("_wpcf7", "479");
+    formData.append("_wpcf7_version", "5.9.8");
+    formData.append("_wpcf7_locale", "en_US");
+    formData.append("_wpcf7_unit_tag", "wpcf7-f479-o1");
+    formData.append("_wpcf7_container_post", "0");
+    formData.append("subscribe", email);
+
     try {
-      const response = await fetch('https://api.pramodmaloo.com/wp-json/contact-form-7/v1/contact-forms/479/feedback', {
-        method: 'POST',
-        body: formData,
-      });
-  
+      const response = await fetch(
+        "https://api.pramodmaloo.com/wp-json/contact-form-7/v1/contact-forms/479/feedback",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
       if (response.ok) {
         Swal.fire({
           icon: "success",
           title: "Subscribed!",
           text: "You have successfully subscribed to the PM Newsletter.",
-          confirmButtonColor: '#F97316',
+          confirmButtonColor: "#F97316",
         });
-        setEmail('');
+        setEmail("");
       } else {
-        throw new Error('Failed to subscribe');
+        throw new Error("Failed to subscribe");
       }
     } catch (error) {
       console.error("Error during form submission:", error);
@@ -100,19 +104,19 @@ const BlogDetails = () => {
   return (
     <>
       <div className="main_banner relative" ref={blogdetailsref}>
-          <div className="w-auto m-auto p-0">
-            <img
-              className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"
-              src="/innerBanner.png"
-              alt="Banner"
-            />
-            {/* <div className="inner_text absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:bottom-28 lg:left-20 z-10">
+        <div className="w-auto m-auto p-0">
+          <img
+            className="w-full object-cover h-16 sm:h-16 md:h-16 lg:h-16 xl:h-28"
+            src="/innerBanner.png"
+            alt="Banner"
+          />
+          {/* <div className="inner_text absolute bottom-12 left-5 md:bottom-20 md:left-10 lg:bottom-28 lg:left-20 z-10">
                 <p className="text-white text-2xl sm:text-xl md:text-3xl lg:text-4xl font-semibold">
                   lorem ipsum dolar
                 </p>
               </div> */}
-          </div>
         </div>
+      </div>
 
       {/* {showNews && isDialogOpen && (
           <div className="overlay">
@@ -217,7 +221,7 @@ const BlogDetails = () => {
                 <form onSubmit={handleSubmit} className="flex items-center">
                   <input
                     type="email"
-                      value={email}
+                    value={email}
                     onChange={handleEmailChange}
                     placeholder="Email Address"
                     className="bg-white text-black placeholder-black w-2/3 p-2 border-none focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50"
@@ -226,7 +230,6 @@ const BlogDetails = () => {
                     type="submit"
                     disabled={loading}
                     className="bg-orange-500 text-white p-2 w-1/3 hover:bg-orange-600 transition duration-300"
-                    
                   >
                     {loading ? "Submitting..." : "Subscribe"}
                   </button>
